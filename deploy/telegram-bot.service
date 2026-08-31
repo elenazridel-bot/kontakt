@@ -1,0 +1,16 @@
+[Unit]
+Description=Telegram bot: сбор контактов в Excel
+After=network.target
+
+[Service]
+Type=simple
+# Замените на реальный путь, куда склонирован репозиторий
+WorkingDirectory=/opt/kontakt
+EnvironmentFile=/opt/kontakt/.env
+ExecStart=/opt/kontakt/venv/bin/python /opt/kontakt/bot.py
+Restart=on-failure
+RestartSec=5
+User=botuser
+
+[Install]
+WantedBy=multi-user.target
